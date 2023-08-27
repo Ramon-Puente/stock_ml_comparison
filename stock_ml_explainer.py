@@ -469,8 +469,8 @@ y_uis_regr_pred = regr_uis.predict(X_uis_regr_test)
 performance(X_uis_regr_test,y_uis_regr_test,y_uis_regr_pred,regr_uis,model_type='regr')
 
 """# **Dashboards**"""
-explainer = ClassifierExplainer(clf_lyts, X_lyts_clf_test, y_lyts_clf_test)
-db = ExplainerDashboard(explainer, title="Cool Title", shap_interaction=False)
+explainer = ClassifierExplainer(clf_lyts, X_lyts_clf_test, y_lyts_clf_test,labels=['Decreased Price','Increased Price'])
+db = ExplainerDashboard(explainer, title="Ramon's LYTS & UIS ML Explainer Dashboard", shap_interaction=False)
 db.to_yaml("dashboard.yaml", explainerfile="explainer.joblib", dump_explainer=True)
 
 db = ExplainerDashboard.from_config("dashboard.yaml")
